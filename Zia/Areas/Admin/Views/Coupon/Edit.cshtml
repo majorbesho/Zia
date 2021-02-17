@@ -1,0 +1,70 @@
+﻿@model Zia.Models.Coupon
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Family</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(m => m.Id)
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Name" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Type" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <select asp-for="Type" asp-items="Html.GetEnumSelectList<Coupon.etype>()" class="form-control"></select>
+                </div>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="MinimumAmount" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="MinimumAmount" class="form-control" />
+                </div>
+                <span asp-validation-for="MinimumAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dicount" class="control-label"></label>
+                <input asp-for="Dicount" class="form-control" />
+                <span asp-validation-for="Dicount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="IsActive" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input type="checkbox" asp-for="IsActive" class="form-control" />
+                </div>
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+            <div class="form-group row ">
+                <div class="col-12 ">
+                    <partial name="_editeAndBackToList" model="@Model.Id" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

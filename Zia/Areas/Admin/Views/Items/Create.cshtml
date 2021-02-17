@@ -1,0 +1,84 @@
+﻿@model Zia.Models.Item
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h1>Create</h1>
+<h4>Item</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortName" class="control-label"></label>
+                <input asp-for="ShortName" class="form-control" />
+                <span asp-validation-for="ShortName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Barcode" class="control-label"></label>
+                <input asp-for="Barcode" class="form-control" />
+                <span asp-validation-for="Barcode" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="img" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input type="file" asp-for="img" class="form-group" />
+                </div>
+                <span asp-validation-for="img" class="text-danger"></span>
+            </div>
+            
+
+            @*<div class="form-group">
+                <label asp-for="img" class="control-label"></label>
+                <input asp-for="img" class="form-control" />
+                <span asp-validation-for="img" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="type" class="control-label"></label>
+                <input asp-for="type" class="form-control" />
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="publicPrice" class="control-label"></label>
+                <input asp-for="publicPrice" class="form-control" />
+                <span asp-validation-for="publicPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="priceAfterDisCont" class="control-label"></label>
+                <input asp-for="priceAfterDisCont" class="form-control" />
+                <span asp-validation-for="priceAfterDisCont" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="isActive" class="control-label"></label>
+                <input asp-for="isActive" class="form-control" />
+                <span asp-validation-for="isActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dis" class="control-label"></label>
+                <input asp-for="Dis" class="form-control" />
+                <span asp-validation-for="Dis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

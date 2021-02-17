@@ -1,0 +1,35 @@
+﻿@model IndexViewModel
+
+
+@if (Model.Item.Count() > 0)
+{
+    <div class="tcontainer">
+
+        <div class="ticker-wrap">
+            <div class="ticker-move">
+
+
+                @foreach (var arti in Model.Category.OrderByDescending(m => m.Id).Take(10))
+                {
+
+                    <div class="ticker-item">
+
+                        <a asp-action="Details" asp-route-id="@arti.Id" asp-area="Customer">
+                            <p>@arti.Name</p>
+                        </a>
+                    </div>
+
+                    <p>@arti.Name</p>
+                    <a asp-action="Details" asp-route-id="@arti.Id" asp-area="Customer">
+                        @arti.Name
+                    </a>
+
+                }
+
+            </div>
+        </div>
+    </div>
+
+}
+<br />
+<br />

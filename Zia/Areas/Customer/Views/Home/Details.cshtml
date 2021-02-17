@@ -1,0 +1,167 @@
+﻿@model ShopingCart
+@{
+    
+    Layout = "~/Views/Shared/_Layout_single.cshtml";
+}
+
+
+
+<form method="post" asp-action="Details" >
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="ItemId" />
+
+
+    <section class="single-product py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img src="@Model.Item.img" />
+                </div><!-- info -->
+                <div class="col-10 mx-auto col-lg-8 single-product-info my-5 px-lg-5">
+                    <!-- ratings -->
+                    <div class="ratings">
+                        <span class="rating-icon"><i class="fas fa-star"></i></span>
+                        <span class="rating-icon"><i class="fas fa-star"></i></span>
+                        <span class="rating-icon"><i class="fas fa-star"></i></span>
+                        <span class="rating-icon"><i class="fas fa-star"></i></span>
+                        <span class="rating-icon"><i class="far fa-star"></i></span>
+                        <span class="text-capitalize">(25 customer reviews)</span>
+                    </div>
+                    <!-- end of ratings -->
+                    <h2 class="text-uppercase my-2">
+                        <p>
+                            @Model.Item.Name
+                        </p>
+                    </h2>
+                    <h2 class="text-">@Model.Item.publicPrice </h2>
+                    <h2>@Model.Item.priceAfterDisCont </h2>
+                    <p class="lead text-muted">
+                        @Model.Item.Dis
+                    </p>
+                    <!-- colors -->
+                    <!-- end of colors -->
+                    <!-- sizes -->
+                    <h5 class="text-uppercase">
+                        sizes : <span class="mx-2">1 k</span> <span class="mx-2">s</span>
+                        <span class="mx-2">1/2</span> <span class="mx-2">1/4</span>
+
+                    </h5>
+                    <div class="d-flex flex-wrap">
+                        <!-- cart buttons -->
+                        <div class="d-flex my-2">
+                            <span class="btn btn-black mx-1">-</span>
+                            <input type="number" asp-for="coutnt"/>
+                            <span class="btn btn-black mx-1">+</span>
+                        </div>
+                        @*<button class="btn btn-black my-2 mx-2">wishlist</button>*@
+                        <button class="btn btn-yellow my-2 mx-2" type="submit">add to cart</button>
+                       
+                    </div>
+
+                </div>
+                >
+            </div>
+        </div>
+    </section>
+    <!-- end of single product -->
+    <!-- product info -->
+    @*<label asp-for="Item.ShortName" class="control-label"></label>
+        <label asp-for="Item.Barcode" class="control-label"></label>
+        <label asp-for="Item.Barcode" class="control-label"></label>*@
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="jumbotron">
+                        <!-- product info links -->
+                        <div class="d-flex justify-content-around flex-wrap my-3 text-center">
+                            <a href="#" class="product-info-link">
+                                <h4 class="text-capitalize">description</h4>
+                            </a>
+                            <a href="#" class="product-info-link">
+                                <h4 class="text-capitalize">additional information</h4>
+                            </a>
+                            <a href="#" class="product-info-link">
+                                <h4 class="text-capitalize">reviews (25)</h4>
+                            </a>
+                        </div>
+
+                        <!-- end of product info links -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</form>
+<!--<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Details" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ItemId" />
+            <div class="form-group">
+                <label asp-for="Item.Name" class="control-label"></label>
+                <input asp-for="Item.Name" class="form-control" />
+                <span asp-validation-for="Item.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.ShortName" class="control-label"></label>
+                <input asp-for="Item.ShortName" class="form-control" />
+                <span asp-validation-for="Item.ShortName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.Barcode" class="control-label"></label>
+                <input asp-for="Item.Barcode" class="form-control" />
+                <span asp-validation-for="Item.Barcode" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Item.img" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input type="file" asp-for="Item.img" class="form-group" />
+                </div>
+                <span asp-validation-for="Item.img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.type" class="control-label"></label>
+                <input asp-for="Item.type" class="form-control" />
+                <span asp-validation-for="Item.type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.publicPrice" class="control-label"></label>
+                <input asp-for="Item.publicPrice" class="form-control" />
+                <span asp-validation-for="Item.publicPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.priceAfterDisCont" class="control-label"></label>
+                <input asp-for="Item.priceAfterDisCont" class="form-control" />
+                <span asp-validation-for="Item.priceAfterDisCont" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.isActive" class="control-label"></label>
+                <input asp-for="Item.isActive" class="form-control" />
+                <span asp-validation-for="Item.isActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.Dis" class="control-label"></label>
+                <input asp-for="Item.Dis" class="form-control" />
+                <span asp-validation-for="Item.Dis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.CategoryId" class="control-label"></label>
+                <select asp-for="Item.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="Item.CategoryId" class="text-danger"></span>
+            </div>-->
+            @*<div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>*@
+        <!--</form>
+    </div>
+</div>-->
+
+<div>
+    @*<a asp-action="Index">Back to List</a>*@
+</div>

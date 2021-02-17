@@ -1,0 +1,36 @@
+﻿@model IndexViewModel
+<div class="row">
+    <!-- single product -->
+
+      @foreach (var item in Model.Item)
+        {
+            <div class="col-10 mx-auto col-md-6 col-lg-4">
+                <div class="featured-container p-5">
+                    <img src="@item.img"
+                         class="img-fluid"
+                         alt="product" />
+                    <span class="featured-search-icon"
+                          data-toggle="modal"
+                          data-target="#productModal">
+                        <i class="fas fa-plus-circle"></i>
+                    </span>
+                    <a   asp-action="Details" asp-controller="Home"
+                        asp-route-id="@item.Id" class="featured-store-link text-captilaze">اضافة</a>
+                </div>
+                <h6 class="text-capitalize text-center my-2">@item.Category.Name</h6>
+                <h6 class="text-center">
+                    <span class="text-muted old-price mx-2">$@item.publicPrice</span>
+                    <span>$@item.priceAfterDisCont</span>
+                </h6>
+
+                </div>
+              
+                }
+                
+
+            </div>
+     
+
+
+   
+   

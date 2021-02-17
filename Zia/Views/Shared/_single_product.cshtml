@@ -1,0 +1,36 @@
+﻿@model IndexViewModel
+ 
+<div class="row">
+    <!-- single product -->
+
+    @if (Model.Item.Count() > 0)
+    {
+        @foreach (var singlItem in Model.Item)
+        {
+            <div class="col-10 mx-auto col-md-6 col-lg-4">
+                <div class="featured-container p-5">
+                    <img src="@singlItem.img"
+                         class="img-fluid"
+                         alt="product" />
+                    <span class="featured-search-icon"
+                          data-toggle="modal"
+                          data-target="#productModal">
+                        <i class="fas fa-plus-circle"></i>
+                    </span>
+                    <a  asp-area="Customer" asp-action="Details" asp-controller="Home"
+                        asp-route-Itemid="@singlItem.Id" class="featured-store-link text-captilaze">اضافة</a>
+                </div>
+                <h6 class="text-capitalize text-center my-2">@singlItem.Category.Name</h6>
+                <h6 class="text-center">
+                    <span class="text-muted old-price mx-2">$@singlItem.publicPrice</span>
+                    <span>$@singlItem.priceAfterDisCont</span>
+                </h6>
+            </div>
+
+        }
+    }
+</div>
+
+
+
+

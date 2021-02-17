@@ -1,0 +1,205 @@
+﻿@page
+@using Zia.Utility
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+
+<div class="main-wrapper">
+
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="auth-wrapper d-flex no-block justify-content-center align-items-center">
+        <div class="auth-box bg-dark border-top border-secondary">
+            <div>
+                @*<div class="text-center p-t-20 p-b-20">
+                        <span class="db"><img src="~/images/zlogo.png" alt="logo" /></span>
+                    </div>*@
+                <!-- Form -->
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal m-t-20">
+                    <div class="row p-b-30">
+                        <div class="col-12">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
+                                </div>
+                                <input asp-for="Input.Name" class="form-control form-control-lg" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-map"></i></span>
+                                </div>
+                                <input asp-for="Input.Address" class="form-control form-control-lg" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-email"></i></span>
+                                </div>
+                                <input asp-for="Input.PostalCode" class="form-control form-control-lg" placeholder="Postl Code" aria-label="Username" aria-describedby="basic-addon1" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-mobile"></i></span>
+                                </div>
+                                <input asp-for="Input.Tele" class="form-control form-control-lg" placeholder="Tele" aria-label="Username" aria-describedby="basic-addon1" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-pencil"></i></span>
+                                </div>
+                                <input asp-for="Input.city" class="form-control form-control-lg" placeholder="City" aria-label="Username" aria-describedby="basic-addon1" required>
+                            </div>
+                            <!-- email -->
+                            @*<label asp-for="Input.Email"></label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>*@
+
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="ti-email"></i></span>
+                                </div>
+                                <input asp-for="Input.Email" class="form-control" class="form-control form-control-lg" placeholder="Email Address"
+                                       aria-label="Username" aria-describedby="basic-addon1" required />  >
+                            </div>
+                            @*<div class="form-group">
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" class="form-control" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>*@
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                </div>
+                                <input asp-for="Input.Password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-info text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                </div>
+                                <input asp-for="Input.ConfirmPassword" class="form-control form-control-lg" placeholder=" Confirm Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                            </div>
+                            @if (User.IsInRole(SD.ManagerUser))
+                            { 
+                            <div class="col-12 ">
+                                <label class="form-check-label">
+                                    <input type="radio" name="rdUserRole" value="@SD.AccoutningUser" class="form-control form-control-lg" />@SD.AccoutningUser
+                                </label>
+                                <label class="form-check-label">
+                                    <input type="radio" name="rdUserRole" value="@SD.ManagerUser" class="form-control form-control-lg" />@SD.ManagerUser
+                                </label>
+                                <label class="form-check-label">
+                                    <input type="radio" name="rdUserRole" value="@SD.PurchasesManagerUser" class="form-control form-control-lg" />@SD.PurchasesManagerUser
+                                </label>
+                                <label class="form-check-label">
+                                    <input type="radio" name="rdUserRole" value="@SD.PurchasesUserUser" class="form-control form-control-lg" />@SD.PurchasesUserUser
+                                </label>
+                                <label class="form-check-label">
+                                    <input type="radio" name="rdUserRole" value="@SD.salesManageruser" class="form-control form-control-lg" />@SD.salesManageruser
+                                </label>
+                                <label class="form-check-label">
+                                    <input type="radio" name="rdUserRole" value="@SD.SalesUser" class="form-control form-control-lg" />@SD.SalesUser
+                                </label>
+                                <label class="form-check-label">
+                                    <input type="radio" name="rdUserRole" value="@SD.customerEndUser" class="form-control form-control-lg" checked />@SD.customerEndUser
+                                </label>
+                                <label class="form-check-label">
+                                    <input type="radio" name="rdUserRole" value="@SD.customerEndUser" class="form-control form-control-lg" checked />@SD.customerEndUser
+                                </label>
+                                <label class="form-check-label">
+                                    <input type="radio" name="rdUserRole" value="@SD.StorUser" class="form-control form-control-lg" />@SD.StorUser
+                                </label>
+
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row border-top border-secondary">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <div class="p-t-20">
+                                    <button class="btn btn-block btn-lg btn-info" type="submit">Sign Up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>$('[data-toggle="tooltip"]').tooltip();
+        $(".preloader").fadeOut();</script>
+
+
+
+
+@*<div class="row">
+        <div class="col-md-4">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h4>Create a new account.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <section>
+                <h4>Use another service to register.</h4>
+                <hr />
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
+                        <div>
+                            <p>
+                                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                                for details on setting up this ASP.NET application to support logging in via external services.
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins)
+                                    {
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
+                }
+            </section>
+        </div>
+    </div>*@
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
