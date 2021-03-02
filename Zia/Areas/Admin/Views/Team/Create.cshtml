@@ -1,0 +1,70 @@
+﻿@model Zia.Models.Team
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Team</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tele" class="control-label"></label>
+                <input asp-for="tele" class="form-control" />
+                <span asp-validation-for="tele" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="face" class="control-label"></label>
+                <input asp-for="face" class="form-control" />
+                <span asp-validation-for="face" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Img" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input type="file" asp-for="Img" class="form-group" />
+                </div>
+                <span asp-validation-for="Img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Whatsapp" class="control-label"></label>
+                <input asp-for="Whatsapp" class="form-control" />
+                <span asp-validation-for="Whatsapp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="website" class="control-label"></label>
+                <input asp-for="website" class="form-control" />
+                <span asp-validation-for="website" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="discreption" class="control-label"></label>
+                <input asp-for="discreption" class="form-control" />
+                <span asp-validation-for="discreption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

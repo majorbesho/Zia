@@ -8,7 +8,7 @@
 
 <form method="post" >
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="@Model.Item.Id" />
+    <input type="hidden" asp-for="@Model.Items.Id" />
 
 
     <section class="single-product py-5">
@@ -29,13 +29,13 @@
                     <!-- end of ratings -->
                     <h2 class="text-uppercase my-2">
                         <p>
-                            @Model.Item.Name
+                            @Model.Items.Name
                         </p>
                     </h2>
-                    <h2 class="text-">@Model.Item.publicPrice </h2>
-                    <h2>@Model.Item.priceAfterDisCont </h2>
+                    <h2 class="text-">@Model.Items.publicPrice </h2>
+                    <h2>@Model.Items.priceAfterDisCont </h2>
                     <p class="lead text-muted">
-                        @Model.Item.Dis
+                        @Model.Items.shortDis
                     </p>
                     <!-- colors -->
                     <!-- end of colors -->

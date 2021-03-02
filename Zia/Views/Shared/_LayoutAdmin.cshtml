@@ -295,8 +295,8 @@
                                 <li class="sidebar-item">
                                     <a asp-area="Admin" asp-controller="Categories" asp-action="Index" class="sidebar-link">
                                         <i class="mdi mdi-note-outline"></i><span class="hide-menu">
-    Categories
-</span>
+                                            Categories
+                                        </span>
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
@@ -313,10 +313,26 @@
                                         </span>
                                     </a>
                                 </li>
+                                @*<li class="sidebar-item">
+            <a asp-area="Admin" asp-controller="Uislide" asp-action="Index" class="sidebar-link">
+                <i class="mdi mdi-note-plus"></i><span class="hide-menu">
+                    Main slide
+                </span>
+            </a>
+        </li>*@
                                 <li class="sidebar-item">
-                                    <a asp-area="Admin" asp-controller="Coupon" asp-action="Index" class="sidebar-link">
+                                    <a asp-area="Admin" asp-controller="Coupon"
+                                       asp-action="Index" class="sidebar-link">
                                         <i class="mdi mdi-note-outline"></i><span class="hide-menu">
                                             Coupon
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a asp-area="Admin" asp-controller="Team"
+                                       asp-action="Index" class="sidebar-link">
+                                        <i class="mdi mdi-note-outline"></i><span class="hide-menu">
+                                            Team
                                         </span>
                                     </a>
                                 </li>

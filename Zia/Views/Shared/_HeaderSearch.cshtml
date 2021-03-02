@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Zia.Utility
+@inject IHttpContextAccessor HttpContextAccessor
+<div class="med-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 d-flex justify-content-start">
+                <div class="col">
+                    <a asp-area="Customer" asp-action="Index" asp-controller="Home" class="navbar-brand">
+                        <img src="~/images/Logo2.png" alt="zia logo" />
+                    </a>
+                    <span class="logo-text"> Food industry</span>
+                </div>
+                <div class="search">
+                    <div class="searchbar">
+                        <input class="search_input"
+                               type="text"
+                               name=""
+                               placeholder="Search..."/>
+                        <a class="search_icon">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="absolute-center">
+                    <div class="section mt-5">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div id="switch">
+                                        <div id="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="navbar-icons d-none d-lg-flex cart ">
+
+                    @if (HttpContextAccessor.HttpContext.Session.GetInt32(SD.ShoppingCartCount) == null)
+                    {
+        <a asp-controller="Carts" asp-action="Index" asp-area="Customer" class="navbar-icon mx-2 navbar-cart-icon">
+            <i class="fas fa-shopping-cart fa-x"></i>
+            <div class="cart-items navbar-cart-icon">(0)</div>
+        </a> }
+    else
+    {
+<a asp-controller="Carts" asp-action="Index" asp-area="Customer" class="navbar-icon mx-2 navbar-cart-icon">
+    <i class="fas fa-shopping-cart fa-3x"></i>
+    <div class="cart-items">(@HttpContextAccessor.HttpContext.Session.GetInt32(SD.ShoppingCartCount))</div>
+</a>}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

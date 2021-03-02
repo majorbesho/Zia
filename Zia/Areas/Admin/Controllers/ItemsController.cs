@@ -82,7 +82,7 @@ namespace Zia.Areas.Admin.Controllers
                 }
                 
                 item.img = imgDefaultpath;
-                db.Add(item);
+                db.Items.Add(item);
                 await db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

@@ -1,0 +1,91 @@
+﻿@model Zia.Models.Contact
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_layoutsolution.cshtml";
+}
+
+<h1>Index</h1>
+
+<h4 class=" text-en-gold bg-main text-color-main">Contact</h4>
+<hr />
+<div class="row  text-en-gold bg-main text-color-main">
+    <div class="col-md-4">
+        <form asp-action="Index" method="post" asp-area="Customer" asp-controller="Contact">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="To" class="control-label"> Tax File</label>
+                <input asp-for="To" class="form-control"  required/>
+                <span asp-validation-for="To" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SenderName" class="control-label"></label>
+                <input asp-for="SenderName" class="form-control" />
+                <span asp-validation-for="SenderName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SenderEmail" class="control-label"></label>
+                <input asp-for="SenderEmail" class="form-control" />
+                <span asp-validation-for="SenderEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BodyMessage" class="control-label"></label>
+                <textarea asp-for="BodyMessage" class="form-control"id="editor1" />
+                </textarea>
+                <span asp-validation-for="BodyMessage" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="DateTimeMssage" class="control-label"></label>
+                <input asp-for="DateTimeMssage" type="text"
+                       id="datepicker" 
+                       value="@DateTime.Now.ToString("f")" class="form-group"  readonly/>
+                <span asp-validation-for="DateTimeMssage" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="MessageSubject" class="control-label"></label>
+                <input asp-for="MessageSubject" class="form-control" />
+                <span asp-validation-for="MessageSubject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanySection" class="control-label"></label>
+                <select class="form-control" asp-for="CompanySection"
+                        asp-items="@Html.GetEnumSelectList<Contact.EnumCompanySection>()">
+                </select>
+                <span asp-validation-for="CompanySection" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script>
+
+    //var editor = CKEDITOR.replace( 'editor1' );
+    //CKFinder.setupCKEditor( editor );
+
+    const config = {
+        filebrowserImageBrowseUrl: "/imagebrowser",
+        filebrowserImageWindowWidth: 750,
+        filebrowserImageWindowHeight: 606,
+        filebrowserBrowseUrl: "/linkbrowser",
+        filebrowserWindowWidth: 350,
+        filebrowserWindowHeight: 500
+    };
+    const editor = document.getElementById("editor1");
+    CKEDITOR.replace(editor, config);
+    //CKEDITOR.replace('editor1',
+    //    {
+    //        height: 400, 
+    //        filebrowserUploadUrl: '/admin/Articales/upload_ckeditor'
+             
+   
+    //    });
+
+</script>

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,8 +21,12 @@ namespace Zia.Areas.Admin.Controllers
         private readonly ApplicationDbContext db;
         [TempData]
         public string StatusMessage { get; set; }
-        public CategoriesController(ApplicationDbContext db)
+
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public CategoriesController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
         {
+            _webHostEnvironment = webHostEnvironment;
             this.db = db;
         }
 
@@ -67,6 +73,18 @@ namespace Zia.Areas.Admin.Controllers
             
             if (ModelState.IsValid)
             {
+                string imgDefaultpath = @"\images\302.jpg";
+                var files = HttpContext.Request.Form.Files;
+                if (files.Count > 0)
+                {
+                    string webrootPath = _webHostEnvironment.WebRootPath;
+                    string imgName = DateTime.Now.ToFileTime().ToString() + Path.GetExtension(files[0].FileName);
+                    FileStream fileStream = new FileStream(Path.Combine(webrootPath, "images", imgName), FileMode.Create);
+                    files[0].CopyTo(fileStream);
+                    imgDefaultpath = @"\images\" + imgName;
+                }
+
+                category.CatImg = imgDefaultpath;
                 db.Add(category);
                 await db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,35 +115,35 @@ namespace Zia.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Discreption,FamilyId")] Category category)
+        public async Task<IActionResult> Edit(int id,  Category category)
         {
             if (id != category.Id)
             {
                 return NotFound();
             }
-
+          
             if (ModelState.IsValid)
             {
-                try
+                string imgDefaultpath = @"\images\302.jpg";
+                var files = HttpContext.Request.Form.Files;
+                if (files.Count > 0)
                 {
-                    db.Update(category);
-                    await db.SaveChangesAsync();
+                    string webrootPath = _webHostEnvironment.WebRootPath;
+                    string imgName = DateTime.Now.ToFileTime().ToString() + Path.GetExtension(files[0].FileName);
+                    FileStream fileStream =
+                        new FileStream(Path.Combine(webrootPath, "images", imgName), FileMode.Create);
+                    files[0].CopyTo(fileStream);
+                    imgDefaultpath = @"\images\" + imgName;
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoryExists(category.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                category.CatImg = imgDefaultpath;
+                db.Categories.Update(category);
+                await db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+ 
+               
             }
             ViewData["FamilyId"] = new SelectList(db.Families, "Id", "Name", category.FamilyId);
-            return View(category);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Admin/Categories/Delete/5

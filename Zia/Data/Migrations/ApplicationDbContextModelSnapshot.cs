@@ -228,6 +228,9 @@ namespace Zia.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CatImg")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Discreption")
                         .HasColumnType("nvarchar(max)");
 
@@ -243,6 +246,39 @@ namespace Zia.Data.Migrations
                     b.HasIndex("FamilyId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Zia.Models.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BodyMessage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanySection")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateTimeMssage")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MessageSubject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("To")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("Zia.Models.Coupon", b =>
@@ -308,7 +344,7 @@ namespace Zia.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Dis")
+                    b.Property<string>("LongDis")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -318,17 +354,23 @@ namespace Zia.Data.Migrations
                     b.Property<string>("ShortName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Specifications")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("img")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("isActive")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("priceAfterDisCont")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("priceAfterDisCont")
+                        .HasColumnType("float");
 
-                    b.Property<decimal>("publicPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("publicPrice")
+                        .HasColumnType("float");
+
+                    b.Property<string>("shortDis")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("type")
                         .HasColumnType("nvarchar(max)");
@@ -338,6 +380,93 @@ namespace Zia.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("Zia.Models.OrderDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Discription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("count")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderDetailses");
+                });
+
+            modelBuilder.Entity("Zia.Models.OrderHeader", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoupinCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("OrderTotalOrginal")
+                        .HasColumnType("float");
+
+                    b.Property<string>("PaymentStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PickUptime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PickupName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TelePhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TransactionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("coupinDiscount")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("orderTotal")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OrderHeaders");
                 });
 
             modelBuilder.Entity("Zia.Models.ShopingCart", b =>
@@ -359,6 +488,42 @@ namespace Zia.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ShopingCarts");
+                });
+
+            modelBuilder.Entity("Zia.Models.Team", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Whatsapp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("discreption")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("face")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("tele")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("website")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("Zia.Models.Uislide", b =>
@@ -472,6 +637,28 @@ namespace Zia.Data.Migrations
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Zia.Models.OrderDetails", b =>
+                {
+                    b.HasOne("Zia.Models.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Zia.Models.OrderHeader", "OrderHeader")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Zia.Models.OrderHeader", b =>
+                {
+                    b.HasOne("Zia.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,10 +16,16 @@ namespace Zia.Models
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }
+        //public string videolink { get; set; }
+
+        [Display(Name = "Image Category")]
+        public string CatImg { get; set; }
         public string Discreption { get; set; }
-        [Display(Name = "Family")]
+        [Display(Name = "Family")] 
+       
         public int FamilyId { get; set; }
         [ForeignKey("FamilyId")]
         public virtual Family Family{ get; set; }
+
     }
 }

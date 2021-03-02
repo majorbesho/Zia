@@ -1,9 +1,9 @@
-﻿@model IndexViewModel
+﻿@using System.Net.Http
+@using Microsoft.AspNetCore.Http
+
+@model IndexViewModel
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-<partial name="_single_product"/>

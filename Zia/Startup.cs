@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Zia.Data;
+using Zia.Models;
 using Zia.Services;
 
 namespace Zia
@@ -50,6 +51,22 @@ namespace Zia
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
             });
+            EmailServerConfiguration config = new EmailServerConfiguration
+            {
+                SmtpPassword = "LOLpopLOL000)))",
+                SmtpServer = "smtp.gmail.com",
+                SmtpUsername = "beshog32@gmail.com"
+            };
+
+            EmailAddress FromEmailAddress = new EmailAddress
+            {
+                Address = "beshog32@gmail.com",
+                Name = "Zia"
+            };
+
+            services.AddSingleton<EmailServerConfiguration>(config);
+            services.AddTransient<IEmailService, MailKitEmailService>();
+            services.AddSingleton<EmailAddress>(FromEmailAddress);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

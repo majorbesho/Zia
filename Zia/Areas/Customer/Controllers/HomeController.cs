@@ -13,7 +13,8 @@ using Zia.Models.ViewModel;
 using Zia.Utility;
 
 namespace Zia.Areas.Customer.Controllers
-{[Area("Customer")]
+{
+    [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext db;
@@ -22,14 +23,16 @@ namespace Zia.Areas.Customer.Controllers
         {
             this.db = db;
         }
+
         public async Task<IActionResult> Index()
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claimsIdentity = (ClaimsIdentity) User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
             if (claim != null)
             {
-                List<ShopingCart> shopingCarts= await db.ShopingCarts.Where(m => m.ApplicationUserId == claim.Value).ToListAsync();
+                List<ShopingCart> shopingCarts =
+                    await db.ShopingCarts.Where(m => m.ApplicationUserId == claim.Value).ToListAsync();
                 var cnt = db.ShopingCarts.Where(u => u.ApplicationUserId == claim.Value).ToList().Count;
                 HttpContext.Session.SetInt32(SD.ShoppingCartCount, shopingCarts.Count);
 
@@ -39,14 +42,58 @@ namespace Zia.Areas.Customer.Controllers
             {
                 Category = await db.Categories
                     .ToListAsync(),
-                Item =await db.Items
-                    .Include(m=>m.Category)
+                Item = await db.Items
+                    .Include(m => m.Category)
+                    .ToListAsync(),
+                Uislides = await db.Uislides.ToListAsync()
+                ,
+                Teams = await db.Teams.ToListAsync()
+
+            };
+            return View(indexVm);
+        }
+        public async Task<IActionResult> Index1(int? catid)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (claim != null)
+            {
+                List<ShopingCart> shopingCarts =
+                    await db.ShopingCarts.Where(m => m.ApplicationUserId == claim.Value).ToListAsync();
+                var cnt = db.ShopingCarts.Where(u => u.ApplicationUserId == claim.Value).ToList().Count;
+                HttpContext.Session.SetInt32(SD.ShoppingCartCount, shopingCarts.Count);
+
+            }
+
+            if (catid == null)
+            {
+                IndexViewModel indexVmall = new IndexViewModel()
+                {
+                    Category = await db.Categories
+                        .ToListAsync(),
+                    Item = await db.Items
+                        .Include(m => m.Category)
+                        .ToListAsync(),
+                    Uislides = await db.Uislides.ToListAsync()
+
+                };
+                return View(indexVmall);
+            }
+
+            IndexViewModel indexVm = new IndexViewModel()
+            {
+                Category = await db.Categories.Where(m=>m.Id== catid)
+                    .ToListAsync(),
+                Item = await db.Items
+                    .Include(m => m.Category)
                     .ToListAsync(),
                 Uislides = await db.Uislides.ToListAsync()
 
             };
             return View(indexVm);
         }
+
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Details(int idItem)
@@ -57,12 +104,9 @@ namespace Zia.Areas.Customer.Controllers
 
             ShopingCart cartObj = new ShopingCart()
             {
-                Item = menuItemFromDb,
+                Items = menuItemFromDb,
                 ItemId = menuItemFromDb.Id
             };
-            
-
-            
 
             return View(cartObj);
         }
@@ -73,11 +117,11 @@ namespace Zia.Areas.Customer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Details(ShopingCart shopingCart)
         {
-            
+
             if (ModelState.IsValid)
             {
                 shopingCart.Id = 0;
-                var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+                var claimsIdentity = (ClaimsIdentity) this.User.Identity;
                 var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
                 shopingCart.ApplicationUserId = claim.Value;
                 ShopingCart cartFromDb = await db.ShopingCarts.Where(c =>
@@ -97,7 +141,7 @@ namespace Zia.Areas.Customer.Controllers
 
                 var count = db.ShopingCarts.Where(c => c.ApplicationUserId == shopingCart.ApplicationUserId).ToList()
                     .Count();
-                HttpContext.Session.SetInt32(SD.ShoppingCartCount,count);
+                HttpContext.Session.SetInt32(SD.ShoppingCartCount, count);
 
                 return RedirectToAction("Index");
             }
@@ -109,13 +153,62 @@ namespace Zia.Areas.Customer.Controllers
 
                 ShopingCart cartObj = new ShopingCart()
                 {
-                    Item = menuItemFromDb,
+                    Items = menuItemFromDb,
                     ItemId = menuItemFromDb.Id
                 };
 
                 return View(cartObj);
 
             }
+
+
         }
+        [HttpGet]
+
+        public async Task<IActionResult> About()
+        {
+            IndexViewModel indexVm = new IndexViewModel()
+            {
+                Category = await db.Categories
+                    .ToListAsync(),
+                Item = await db.Items
+                    .Include(m => m.Category)
+                    .ToListAsync(),
+                Uislides = await db.Uislides.ToListAsync()
+
+            };
+            return View(indexVm);
+        }
+        public async Task<IActionResult> Ourteam()
+        {
+            IndexViewModel indexVmteam = new IndexViewModel()
+            {
+                Category = await db.Categories
+                    .ToListAsync(),
+                Item = await db.Items
+                    .Include(m => m.Category)
+                    .ToListAsync(),
+                Uislides = await db.Uislides.ToListAsync(),
+                Teams = await db.Teams.ToListAsync()
+
+
+
+            };
+            return View(indexVmteam);
+        }
+        //public async Task<IActionResult> ContactUs()
+        //{
+        //    IndexViewModel indexVm = new IndexViewModel()
+        //    {
+        //        Category = await db.Categories
+        //            .ToListAsync(),
+        //        Item = await db.Items
+        //            .Include(m => m.Category)
+        //            .ToListAsync(),
+        //        Uislides = await db.Uislides.ToListAsync()
+
+        //    };
+        //    return View(indexVm);
+        //}
     }
 }

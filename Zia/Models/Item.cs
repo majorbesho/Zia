@@ -21,16 +21,19 @@ namespace Zia.Models
         public string img { get; set; }
         public string type { get; set; }
         [Required]
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
+        [Range(typeof(double), "0", "79228162514264337593543950335")]
         
-        public decimal publicPrice { get; set; }
-        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal priceAfterDisCont { get; set; }
+        public double publicPrice { get; set; }
+        [Range(typeof(double), "0", "79228162514264337593543950335")]
+        public double priceAfterDisCont { get; set; }
         public string isActive { get; set; }
         [Display(Name = "show in")]
-        public string Dis { get; set; }
+        public string shortDis { get; set; }
+
         public enum EDis { cat=1, cat2=2, cat3 = 3, cat4 = 4, cat5 = 5, }
 
+        public string LongDis { get; set; }
+        public string Specifications { get; set; }
         public int CategoryId  { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }

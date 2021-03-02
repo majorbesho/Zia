@@ -24,7 +24,7 @@ namespace Zia.Models
         public int ItemId { get; set; }
         [NotMapped]
         [ForeignKey("ItemId")]
-        public virtual Item Item { get; set; }
+        public virtual Item Items { get; set; }
         [Range(1,int.MaxValue)]
         public int coutnt { get; set; }
 

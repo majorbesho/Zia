@@ -1,0 +1,408 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Zia.Utility
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description"
+          content="الموقع الرسمى ل  zia  اكبر مصنع للمنتجات الغذائية " />
+    <meta name="keywords" content="Zia, Food, industry, EH-group, ehg-group " />
+    <meta name="author" content="Beshoy george " />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+          rel="stylesheet" />
+    <!-- title of site -->
+    <title>Zia</title>
+    <!--font-awesome.min.css-->
+    <link rel="stylesheet" href="~/css/allfont.min.css" />
+    <!--animate.css-->
+    <link rel="stylesheet" href="~/css/animate.css" />
+    <!--owl.carousel.css-->
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css" />
+    <!--responsive.css-->
+    <link rel="stylesheet" href="~/css/responsive.css" />
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <!-- font awesome -->
+    <script src="//cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+            integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+            crossorigin="anonymous"></script>
+    <!-- main css -->
+    <link rel="stylesheet" href="~/css/main.css" />
+    <style></style>
+</head>
+<body>
+    <header>
+
+
+
+        <partial name="_HeaderSearch" />
+
+        <partial name="_nivagation" />
+
+
+        <div class="section full-height">
+
+        </div>
+        <partial name="_IconSlide" />
+
+    </header>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+
+        </main>
+    </div>
+    <!-- end of header section -->
+
+
+
+
+    <section class="featured py-5">
+        <div class="container">
+
+            @*<partial name="_Carsoul"/>*@
+
+
+
+            @RenderBody()
+
+        </div>
+
+
+    </section>
+    <!-- end of  featured section -->
+    <!-- partners -->
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container-fluid">
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="owl-carousel" id="owl-example">
+                                <div class="item">
+                                    <img src="~/img/kheir-zaman-logo.png" alt="image" />
+                                </div>
+                                <div class="item">
+                                    <img src="~/img/5.jpg" alt="image" />
+                                </div>
+                                <div class="item">
+                                    <img src="~/img/302.jpg" alt="image" />
+                                </div>
+                                <div class="item">
+                                    <img src="~/img/download.png" alt="image" />
+                                </div>
+                                <div class="item">
+                                    <img src="~/img/Logo_METRO.svg.png" alt="image" />
+                                </div>
+                                <div class="item">
+                                    <img src="~/img/1200px-Logo_Carrefour_1966.svg.png" alt="image" />
+                                </div>
+                                <div class="item">
+                                    <img src="~/img/hepper.png" alt="image" />
+                                </div>
+                                <div class="item">
+                                    <img src="~/img/hepper.png" alt="image" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Endpartiners-->
+    <!-- skills -->
+    <section class="skills py-5">
+        <div class="container">
+            <div class="row">
+                <!-- single skill -->
+                <div class="col-10 mx-auto col-md-6 col-lg-4 d-flex my-3">
+                    <div class="skill-icon mr-3"><i class="fas fa-truck"></i></div>
+                    <div class="skill-text">
+                        <h3 class="text-uppercase text-white">شحن </h3>
+                        <p class="text-muted text-capitalize">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                            pariatur.
+                        </p>
+                    </div>
+                </div>
+                <!-- end of  single skill -->
+                <!-- single skill -->
+                <div class="col-10 mx-auto col-md-6 col-lg-4 d-flex my-3">
+                    <div class="skill-icon mr-3">
+                        <i class="fas fa-comment-dollar"></i>
+                    </div>
+                    <div class="skill-text">
+                        <h3 class="text-uppercase text-white">افضل جودة</h3>
+                        <p class="text-muted text-capitalize">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                            pariatur.
+                        </p>
+                    </div>
+                </div>
+                <!-- end of  single skill -->
+                <!-- single skill -->
+                <div class="col-10 mx-auto col-md-6 col-lg-4 d-flex my-3">
+                    <div class="skill-icon mr-3"><i class="fas fa-award"></i></div>
+                    <div class="skill-text">
+                        <h3 class="text-uppercase text-white">منتجات علاجية</h3>
+                        <p class="text-muted text-capitalize">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                            pariatur.
+                        </p>
+                    </div>
+                </div>
+                <!-- end of  single skill -->
+            </div>
+        </div>
+    </section>
+    <!-- end skills -->
+    <!-- footer -->
+    <footer class="py-5 footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-10 mx-auto text-center">
+                    <h1 class="text-uppercase font-weight-bold text-yellow footer-title text-center d-inline-block">
+                        تواصل معنا
+                    </h1>
+                    <div class="footer-icons my-5 d-flex justify-content-center">
+                        <!-- single icon -->
+                        <a href="https://www.facebook.com/Zia-Food-Industries-101958898306977"
+                           class="footer-icon mx-2 ">
+                            <i class="fab fa-facebook fa-3x"></i>
+                        </a>
+                        <!-- end of  single icon -->
+                        <!-- single icon -->
+                        <!-- end of  single icon -->
+                        <!-- single icon -->
+                        <!-- end of  single icon -->
+                        <!-- single icon -->
+                        <a href="https://www.instagram.com/ziafoodindustries/" class="footer-icon mx-2">
+                            <i class="fab fa-instagram fa-3x"></i>
+                        </a>
+                        <!-- end of  single icon -->
+                        <!-- single icon -->
+                        <a href="https://www.youtube.com/channel/UCqV7cJSCgKfyETGfmso3Yhg" class="footer-icon mx-2">
+                            <i class="fab fa-youtube fa-3x"></i>
+                        </a>
+                        <!-- end of  single icon -->
+                    </div>
+                    <!-- end footer icons -->
+                    <p class="text-muted text-capitalize w-75 mx-auto text-left">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quas
+                        itaque minima rem esse aut eos inventore numquam nostrum placeat?
+                    </p>
+                    <div class="footer-contact mt-5 d-flex justify-content-around flex-wrap">
+                        <!-- single contact -->
+                        <div class="text-capitalize">
+                            <span class="footer-icon mr-2">
+                                <i class="fas fa-map"></i>
+                            </span>
+                            القاهرة , التجمع الخامس , مجمع البنوك
+                        </div>
+                        <!-- end of single contact -->
+                        <!-- single contact -->
+                        <div class="text-capitalize">
+                            <span class="footer-icon mr-2">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            phone : +20 120081116
+                        </div>
+                        <!-- end of single contact -->
+                        <!-- single contact -->
+                        <div class="text-capitalize">
+                            <span class="footer-icon mr-2">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            email : info@zia.com
+                        </div>
+                        <!-- end of single contact -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!--footer start-->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="hm-footer-copyright text-center">
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/Zia-Food-Industries-101958898306977"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/ziafoodindustries/"><i class="fa fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCqV7cJSCgKfyETGfmso3Yhg"><i class="fa fa-youtube"></i></a>
+
+                </div>
+                <p>
+
+
+                    &copy; 2021 - Zia - <a asp-area="" asp-controller="Home" asp-action="Index">Privacy</a>
+
+
+
+                </p><!--/p-->
+            </div><!--/.text-center-->
+        </div><!--/.container-->
+
+        <div id="scroll-Top">
+            <div class="return-to-top">
+                <i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+            </div>
+
+        </div><!--/.scroll-Top-->
+
+    </footer><!--/.footer-->
+    <!--footer end-->
+    <!-- Include all js compiled plugins (below), or include individual files as needed -->
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6034ace69c4f165d47c618ae/1ev6s6pph';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+    <!--modernizr.min.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+    <!--bootstrap.min.js-->
+    <!-- bootsnav js -->
+    <script src="~/js/app.js" asp-append-version="true"></script>
+    <script src="~/js/app.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.counterup.min.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.magnific-popup.min.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.waypoints.min.js" asp-append-version="true"></script>
+    <script src="~/js/owl.carousel.min.js" asp-append-version="true"></script>
+    <script src="~/js/nice.js" asp-append-version="true"></script>
+    <script src="~/js/wow.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!--owl.carousel.js-->
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+
+    <!--Custom JS-->
+    <script>
+
+        (function ($) {
+            "use strict";
+
+            $(function () {
+                var header = $(".start-style");
+                $(window).scroll(function () {
+                    var scroll = $(window).scrollTop();
+
+                    if (scroll >= 10) {
+                        header.removeClass('start-style').addClass("scroll-on");
+                    } else {
+                        header.removeClass("scroll-on").addClass('start-style');
+                    }
+                });
+            });
+
+            //Animation
+
+            $(document).ready(function () {
+                $('body.hero-anime').removeClass('hero-anime');
+            });
+
+            //Menu On Hover
+
+            $('body').on('mouseenter mouseleave', '.nav-item', function (e) {
+                if ($(window).width() > 750) {
+                    var _d = $(e.target).closest('.nav-item'); _d.addClass('show');
+                    setTimeout(function () {
+                        _d[_d.is(':hover') ? 'addClass' : 'removeClass']('show');
+                    }, 1);
+                }
+            });
+
+            //Switch light/dark
+
+            $("#switch").on('click', function () {
+                if ($("body").hasClass("dark")) {
+                    $("body").removeClass("dark");
+                    $("#switch").removeClass("switched");
+                }
+                else {
+                    $("body").addClass("dark");
+                    $("#switch").addClass("switched");
+                }
+            });
+    </script>
+    <script>
+        $(document).ready(function ($) {
+            $('.count-number').counterUp({
+                delay: 5,
+                time: 1000
+            });
+        });</script>
+    <script>
+        $('#demo').carousel({
+            interval: 3000
+        });
+    </script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            navText: [
+                "<i class='fa fa-caret-left'></i>",
+                "<i class='fa fa-caret-right'></i>"
+            ],
+            autoplay: true,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
+
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

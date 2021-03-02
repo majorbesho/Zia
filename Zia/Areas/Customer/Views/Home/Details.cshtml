@@ -10,12 +10,51 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="ItemId" />
 
+    <section class="wrap-3d">
+    <div class="item-3d">
+        <span class="ground"></span>
+        <figure class="item-content group">
+            <div class="item-img">
+                
+                <img src="@Model.Items.img" 
+                    alt=""
+                />
+            </div>
+            <figcaption class="item-caption">
+                <p>
+                    <strong>@Model.Items.shortDis</strong><br />
 
+                </p>
+                <p>
+                    <h2 class="old-price">@Model.Items.publicPrice </h2>
+                    <h2>@Model.Items.priceAfterDisCont </h2>
+                    <p class="lead text-muted">
+                        @Model.Items.shortDis
+                    </p>
+                    <p class="lead text-muted">
+                        @Model.Items.Specifications
+
+                    </p>
+                    <p class="lead text-muted">
+                        @Model.Items.Barcode
+
+                    </p
+                @*<strong>Sport Band</strong><br />
+        White Fluoroelastomer<br />
+        Stainless Steel Pin*@
+                </p>
+                @*<p>
+            <a href="#">View 38mm in the store</a><br />
+            <a href="#">View 42mm in the store</a>
+        </p>*@
+            </figcaption>
+        </figure>
+    </div>
     <section class="single-product py-5">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <img src="@Model.Item.img" />
+                    <img src="@Model.Items.img" />
                 </div><!-- info -->
                 <div class="col-10 mx-auto col-lg-8 single-product-info my-5 px-lg-5">
                     <!-- ratings -->
@@ -30,13 +69,13 @@
                     <!-- end of ratings -->
                     <h2 class="text-uppercase my-2">
                         <p>
-                            @Model.Item.Name
+                            @Model.Items.Name
                         </p>
                     </h2>
-                    <h2 class="text-">@Model.Item.publicPrice </h2>
-                    <h2>@Model.Item.priceAfterDisCont </h2>
+                    <h2 class="text-">@Model.Items.publicPrice </h2>
+                    <h2>@Model.Items.priceAfterDisCont </h2>
                     <p class="lead text-muted">
-                        @Model.Item.Dis
+                        @Model.Items.shortDis
                     </p>
                     <!-- colors -->
                     <!-- end of colors -->
@@ -69,13 +108,13 @@
         <label asp-for="Item.Barcode" class="control-label"></label>
         <label asp-for="Item.Barcode" class="control-label"></label>*@
 
-    <section>
+    <!--<section>
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="jumbotron">
+                    <div class="jumbotron">-->
                         <!-- product info links -->
-                        <div class="d-flex justify-content-around flex-wrap my-3 text-center">
+                        <!--<div class="d-flex justify-content-around flex-wrap my-3 text-center">
                             <a href="#" class="product-info-link">
                                 <h4 class="text-capitalize">description</h4>
                             </a>
@@ -85,14 +124,14 @@
                             <a href="#" class="product-info-link">
                                 <h4 class="text-capitalize">reviews (25)</h4>
                             </a>
-                        </div>
+                        </div>-->
 
                         <!-- end of product info links -->
 
-                    </div>
+                    <!--</div>
                 </div>
             </div>
-        </div>
+        </div-->>
     </section>
 
 </form>
