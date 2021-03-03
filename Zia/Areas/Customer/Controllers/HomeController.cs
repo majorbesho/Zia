@@ -47,7 +47,9 @@ namespace Zia.Areas.Customer.Controllers
                     .ToListAsync(),
                 Uislides = await db.Uislides.ToListAsync()
                 ,
-                Teams = await db.Teams.ToListAsync()
+                Teams = await db.Teams.ToListAsync(),
+                Clinets = await db.Clinets.ToListAsync()
+
 
             };
             return View(indexVm);
@@ -75,7 +77,8 @@ namespace Zia.Areas.Customer.Controllers
                     Item = await db.Items
                         .Include(m => m.Category)
                         .ToListAsync(),
-                    Uislides = await db.Uislides.ToListAsync()
+                    Uislides = await db.Uislides.ToListAsync(),
+                    Clinets = await db.Clinets.ToListAsync()
 
                 };
                 return View(indexVmall);
@@ -88,7 +91,8 @@ namespace Zia.Areas.Customer.Controllers
                 Item = await db.Items
                     .Include(m => m.Category)
                     .ToListAsync(),
-                Uislides = await db.Uislides.ToListAsync()
+                Uislides = await db.Uislides.ToListAsync(),
+                Clinets = await db.Clinets.ToListAsync()
 
             };
             return View(indexVm);

@@ -1214,7 +1214,7 @@ height: 400px;
   color: var(--mainOrange);
 }
 .btn-black {
-  background: transparent;
+ /* background: transparent;*/
   text-transform: capitalize;
   font-size: 1.2rem;
   color: var(--mainBlack);

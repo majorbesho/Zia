@@ -3,19 +3,21 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zia.Data;
 
 namespace Zia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210303004212_additemSizeAddVdeUploder")]
+    partial class additemSizeAddVdeUploder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.12")
+                .HasAnnotation("ProductVersion", "3.1.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -248,27 +250,6 @@ namespace Zia.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Zia.Models.Clinet", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Img")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clinets");
-                });
-
             modelBuilder.Entity("Zia.Models.Contact", b =>
                 {
                     b.Property<int>("Id")
@@ -381,8 +362,8 @@ namespace Zia.Data.Migrations
                     b.Property<string>("img")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("isActive")
-                        .HasColumnType("bit");
+                    b.Property<string>("isActive")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("priceAfterDisCont")
                         .HasColumnType("float");
@@ -578,9 +559,6 @@ namespace Zia.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Url")
                         .HasColumnType("nvarchar(max)");

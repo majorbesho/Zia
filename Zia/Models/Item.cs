@@ -26,9 +26,17 @@ namespace Zia.Models
         public double publicPrice { get; set; }
         [Range(typeof(double), "0", "79228162514264337593543950335")]
         public double priceAfterDisCont { get; set; }
-        public string isActive { get; set; }
+        public bool isActive { get; set; }
         [Display(Name = "show in")]
         public string shortDis { get; set; }
+
+     
+        [Display(Name = "size")]
+        public string size { get; set; }
+
+        public enum Esize { kilo = 1, Half = 2, quarter = 3, Cartoon = 4, cat5 = 5, }
+       
+
 
         public enum EDis { cat=1, cat2=2, cat3 = 3, cat4 = 4, cat5 = 5, }
 
@@ -37,6 +45,8 @@ namespace Zia.Models
         public int CategoryId  { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
+
+
 
     }
 }

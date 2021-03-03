@@ -23,10 +23,13 @@ namespace Zia.Data
         public DbSet<Uislide> Uislides { get; set; }
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<OrderHeader> OrderHeaders { get; set; }
+        public DbSet<VideoUploader> VideoUploaders { get; set; }
 
         public DbSet<OrderDetails> OrderDetailses { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Team> Teams { get; set; }
+        
+        public DbSet<Clinet> Clinets { get; set; }  
 
 
 
