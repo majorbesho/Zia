@@ -1,0 +1,40 @@
+﻿@model IndexViewModel
+
+
+
+
+
+
+ 
+<div class="container-fluid">
+<div class="row">
+    @foreach (var singleCategoty in Model.Item.Where(m => m.isActive == true).Take(12))
+    {
+        <a asp-action="Details" asp-route-id="@singleCategoty.Id" asp-area="Customer">
+            @*@singlItem.Category.Name*@
+        </a>
+
+
+        <div class="col-3">
+            <div>
+                <!-- Start	Product details -->
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@singleCategoty.img" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@singleCategoty.Name</h5>
+                        <p class="card-text">@singleCategoty.LongDis</p>
+                        <h5 class="card-title">@singleCategoty.publicPrice</h5>
+                        <p class="card-text">@singleCategoty.priceAfterDisCont</p>
+                        <a href="#" class="btn btn-primary">اشترى الان </a>
+                    </div>
+                </div>
+
+              
+                </div>
+            </div>
+
+    }
+
+
+</div>
+</div>

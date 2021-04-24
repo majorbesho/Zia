@@ -1,6 +1,8 @@
-﻿
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 <div class="navigation-wrap start-header start-style">
-    <div class="container">
+    <div class="container-fluid ">
         <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-md text-nav">
@@ -26,28 +28,23 @@
                                    aria-haspopup="true"
                                    aria-expanded="false"
                                    style="font-family: 'Dancing Script', cursive;">
-                                    Home
+                                    @Localizer.GetString("Home") 
                                 </a>
-                                @*<div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                    </div>*@
+                                
                             </li>
                             @*<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="nav-link" asp-area="Customer"
-                                   asp-controller="Home" asp-action="about">about</a>
-                            </li>*@
+                                    <a class="nav-link" asp-area="Customer"
+                                       asp-controller="Home" asp-action="about">about</a>
+                                </li>*@
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                 <a class="nav-link" href="#about" style="font-family: 'Dancing Script', cursive;">
-                                    about
+                                    @Localizer.GetString("about")  
                                 </a>
                             </li>
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Ourteam"
-                                   >
-                                    Our Team
+                                <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Ourteam">
+                                    
+                                    @Localizer.GetString("Our Team") 
                                 </a>
                             </li>
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -56,28 +53,80 @@
                                    asp-area="Customer" asp-controller="Home" asp-action="ContactUs"
                                    role="button"
                                    aria-haspopup="true"
-                                   aria-expanded="false"
-                                   >
-                                    Services
+                                   aria-expanded="false">
+                                    
+                                    @Localizer.GetString("natural Honey") 
                                 </a>
-                                @*<div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                    </div>*@
+                                <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#"> عسل طبيعيى</a>
+                                        <a class="dropdown-item" href="#">عسل موالح </a>
+                                        <a class="dropdown-item" href="#">عسل بردقوش</a>
+                                        <a class="dropdown-item" href="#">عسل زهرة البرسيم</a>
+                                    </div>
                             </li>
+
+                           
                             
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="nav-link" asp-area="Customer" 
+                                <a class="nav-link" asp-area="Customer"
                                    asp-controller="Contact"
                                    asp-action="Index">
-                                    Contact us
+                                    
+                                    @Localizer.GetString("honey") 
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </div>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" asp-area="Customer"
+                                   asp-controller="Contact"
+                                   asp-action="Index">
+                                    
+                                    @Localizer.GetString("Frozen") 
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </div>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" asp-area="Customer"
+                                   asp-controller="Contact"
+                                   asp-action="Index">
+                                    
+                                    @Localizer.GetString("Chocolate") 
                                 </a>
                             </li>
                             <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-    <partial name="_LoginPartial" />
-</li>
+                                <a class="nav-link" asp-area="Customer"
+                                   asp-controller="Contact"
+                                   asp-action="Index">
+                                    
+                                    @Localizer.GetString("Offers") 
+                                </a>
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <a class="nav-link" asp-area="Customer"
+                                   asp-controller="Contact"
+                                   asp-action="Index">
+                                    
+                                    @Localizer.GetString("Contact us") 
+                                </a>
+                            </li>
+                           
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <partial name="_LoginPartial" />
+                            </li>
+                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                <language-nav view-context="ViewContext"></language-nav>
+                            </li>
+
                         </ul>
                     </div>
                 </nav>

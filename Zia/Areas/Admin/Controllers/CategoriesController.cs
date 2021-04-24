@@ -33,7 +33,9 @@ namespace Zia.Areas.Admin.Controllers
         // GET: Admin/Categories
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = db.Categories.Include(c => c.Family);
+            var applicationDbContext = db.Categories
+                .Include(c => c.Family)
+                .Include(c=>c.VideoUploader);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -47,6 +49,7 @@ namespace Zia.Areas.Admin.Controllers
 
             var category = await db.Categories
                 .Include(c => c.Family)
+                .Include(c => c.VideoUploader)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (category == null)
             {
@@ -60,6 +63,7 @@ namespace Zia.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewData["FamilyId"] = new SelectList(db.Families, "Id", "Name");
+            ViewData["VideoURLId"] = new SelectList(db.VideoUploaders, "Id", "Url");
             return View();
         }
 
@@ -90,6 +94,8 @@ namespace Zia.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["FamilyId"] = new SelectList(db.Families, "Id", "Name", category.FamilyId);
+            ViewData["VideoURLId"] = new SelectList(db.VideoUploaders, "Id", "Url");
+
             return View(category);
         }
 
@@ -107,6 +113,8 @@ namespace Zia.Areas.Admin.Controllers
                 return NotFound();
             }
             ViewData["FamilyId"] = new SelectList(db.Families, "Id", "Name", category.FamilyId);
+            ViewData["VideoURLId"] = new SelectList(db.VideoUploaders, "Id", "Url");
+
             return View(category);
         }
 
@@ -143,6 +151,8 @@ namespace Zia.Areas.Admin.Controllers
                
             }
             ViewData["FamilyId"] = new SelectList(db.Families, "Id", "Name", category.FamilyId);
+            ViewData["VideoURLId"] = new SelectList(db.VideoUploaders, "Id", "Url");
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -156,6 +166,7 @@ namespace Zia.Areas.Admin.Controllers
 
             var category = await db.Categories
                 .Include(c => c.Family)
+                .Include(c=>c.VideoUploader)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (category == null)
             {

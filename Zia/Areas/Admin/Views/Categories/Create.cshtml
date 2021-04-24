@@ -37,6 +37,10 @@
                 <select asp-for="FamilyId" class ="form-control" asp-items="ViewBag.FamilyId"></select>
             </div>
             <div class="form-group">
+                <label asp-for="VideoUploaderId" class="control-label"></label>
+                <select asp-for="VideoUploaderId" class ="form-control" asp-items="ViewBag.VideoURLId"></select>
+            </div>
+            <div class="form-group">
                <partial name="_backToListAndCreartBtn"/>
             </div>
         </form>

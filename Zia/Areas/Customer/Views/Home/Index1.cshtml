@@ -1,10 +1,13 @@
-﻿@using System.Net.Http
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@using System.Net.Http
 @using Microsoft.AspNetCore.Http
 
 @model IndexViewModel
-
 @{
-    ViewData["Title"] = "Index";
+  
+    ViewData["Title"] = Localizer["Index"] ;
     Layout = "~/Views/Shared/_Layoutsolution.cshtml";
 }
 
@@ -12,69 +15,98 @@
 
 <!------ Slid-->
 
-
+<h2> @ViewData["MyTitle"]</h2>
 <partial name="_allProduct" />
 
 
-<div class="product">
+<div class="product container-fluid">
     @foreach (var category in Model.Category)
     {
+        <section class="">
+            <div class="video-media">
+                <video width="1200" height="800" muted loop autoplay>
+                    <source src="@category.VideoUploader.Url" type="video/mp4">
+                    @*<source src="movie.ogg" type="video/ogg">*@
 
+                </video>
+            </div>
+        </section>
         <div class="data-container main-category">
 
-	
+
             <span class="btn-cat">@category.Name </span>
         </div>
 
-   
+
         var itemincat = Model.Item.Where(m => m.Category.Name.Equals(category.Name));
 
-        <div class="row xxxx">
-
-            @foreach (var itemx in itemincat)
-            {
 
 
-                <div class="col-10 mx-auto col-md-6 col-lg-4  hover03 column">
-                    <div class="featured-container p-3">
-                        <figure>
-                            <img src="@itemx.img"
-                                 class="img-fluid"
-                                 alt="product" />
-                        </figure>
-                        <span class="featured-search-icon"
-                              data-toggle="modal"
-                              data-target="#productModal">
-                            <i class="fas fa-plus-circle"></i>
-                        </span>
-                        <a asp-action="Details" asp-controller="Home"
-                           asp-route-idItem="@itemx.Id" class="featured-store-link text-captilaze">اضافة</a>
-                        <h6 class="text-capitalize text-center my-2">
-                            @itemx.Category.Name
-               
+        <section>
+            <div class="container-fluid">
+                <div class="row">
+                    @foreach (var itemx in itemincat)
+                    {
 
-                        </h6>
-            
 
-                        <h6 class="text-center">
-                            <span class="text-muted old-price mx-2">$@itemx.priceAfterDisCont</span>
-                            <br />
-                            <br />
-                            <br />
-                
-                
-                        </h6>
-                        <h5>$@itemx.publicPrice</h5>
-                    </div>
+
+
+                        <div class="col-4">
+                            <div id="container">
+                                <!-- Start	Product details -->
+                                <div class="product-details">
+
+
+                                    <div class="product-image">
+                                        <img src="@itemx.img"
+                                             alt="@itemx.Name" />
+
+                                        <!-- 	product Information-->
+                                        <div class="info">
+                                            <p class="information">
+                                                <h3 class="text-center">@itemx.Name</h3>
+                                                @itemx.shortDis
+                                            </p>
+                                            <span class="hint-star star">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                            </span>
+                                            <ul>
+                                                <li><strong>Name: </strong>@itemx.ShortName</li>
+                                                <li><strong>Type </strong>@itemx.type</li>
+                                                <li><strong>Barcode: </strong>@itemx.Barcode</li>
+                                                <li><strong>category: </strong>@itemx.Category.Name</li>
+                                                <li><strong>Size: </strong>@itemx.size</li>
+                                                <li><strong>Discount: </strong>@itemx.publicPrice</li>
+                                            </ul>
+                                            <button class="btn">
+                                                <!-- 		the Price -->
+                                                <span class="price">LE @itemx.priceAfterDisCont </span>
+                                                <!-- 		shopping cart icon-->
+                                                <span class="shopping-cart">
+                                                    <i class="fa fa-shopping-cart" style="color: red;" aria-hidden="true"></i>
+                                                </span>
+                                                <!-- 		Buy Now / ADD to Cart-->
+                                                <a class="buy" asp-action="Details" asp-controller="Home"
+                                                   asp-route-idItem="@itemx.Id">Buy Now</a>
+                                                <span></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--  End product image  -->
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+
+
                 </div>
-
-
-            }
-
-        </div>
+            </div>
+        </section>
     }
-   
-
-
 
 </div>

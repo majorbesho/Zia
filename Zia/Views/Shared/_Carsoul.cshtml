@@ -7,39 +7,54 @@
 
 @if (Model.Uislides.Count() > 0)
 {
-    <div class="container-fluid">
-    <div class="carousel-inner">
-        <div id="demo"
-             class="carousel slide img-fluid"
-             data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-                <div class="col-lg-12 col-sm-12 mb-5 mb-sm-2 ">
+    @*<div class="container-fluid">
+        <div class="carousel-inner">
+            <div id="demo"
+                 class="carousel slide img-fluid" 
+                 data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="col-lg-12 col-sm-12 mb-5 mb-sm-2 ">*@
 
-                    @{ var first = true; }
-                    @foreach (var arti in Model.Uislides.OrderByDescending(article => article.Id).Take(3).Where(article => article.IsActive =true ))
-                    {
-                        <div class="carousel-item @(first ? Html.Raw("active") : Html.Raw(""))">
-                            <img src="@arti.Img" width="1500px" height="300px" alt="@arti.Name" style="display: inline" class="d-block img-fluid"/>
-     
+                        <div class="bss-slides num1" tabindex="1" autofocus="autofocus">
 
+                            @{ var first = true; }
+                            @foreach (var arti in Model.Uislides.OrderByDescending(article => article.Id).Take(3).Where(article => article.IsActive = true))
+                            {
+
+                                @*<div class="carousel-item @(first ? Html.Raw("active") : Html.Raw(""))">
+                <img src="@arti.Img" alt="@arti.Name" style="display: inline" class="d-block img-fluid" />
+            </div>*@
+                                <figure class="bss">
+                                    <img src="@arti.Img" alt="@arti.Name" class="img-fluid rounded mx-auto d-block"  />
+                                    <figcaption class="by-now">
+                                        <button>
+                                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index1" asp-route-catid="5">
+                                                اشترى الان 
+                                            </a>
+                                            
+                                        </button>
+                                    </figcaption>
+                                </figure>
+                                <br />
+                                first = false;
+                            }
                         </div>
-                        first = false;
-                    }
-
-                </div>
+                    @*</div>
+                    </div>
             </div>
         </div>
-    </div>
-    </div>
-    <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+    </div>*@
+
+    
+
+    @*<a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
-    </a>
-
+    </a>*@
 
 }
 else

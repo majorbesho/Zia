@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Zia.Data;
-using Zia.Data.Migrations;
+
 using Zia.Models;
 using Coupon = Zia.Models.Coupon;
 

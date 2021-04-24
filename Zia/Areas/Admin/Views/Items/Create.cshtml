@@ -16,6 +16,16 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ArName" class="control-label"></label>
+                <input asp-for="ArName" class="form-control" />
+                <span asp-validation-for="ArName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArShortName" class="control-label"></label>
+                <input asp-for="ArShortName" class="form-control" />
+                <span asp-validation-for="ArShortName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="ShortName" class="control-label"></label>
                 <input asp-for="ShortName" class="form-control" />
                 <span asp-validation-for="ShortName" class="text-danger"></span>
@@ -25,7 +35,7 @@
                 <input asp-for="Barcode" class="form-control" />
                 <span asp-validation-for="Barcode" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group row">
                 <div class="col-3">
                     <label asp-for="img" class="col-form-label"></label>
@@ -35,13 +45,13 @@
                 </div>
                 <span asp-validation-for="img" class="text-danger"></span>
             </div>
-            
+
 
             @*<div class="form-group">
-                <label asp-for="img" class="control-label"></label>
-                <input asp-for="img" class="form-control" />
-                <span asp-validation-for="img" class="text-danger"></span>
-            </div>*@
+            <label asp-for="img" class="control-label"></label>
+            <input asp-for="img" class="form-control" />
+            <span asp-validation-for="img" class="text-danger"></span>
+        </div>*@
             <div class="form-group">
                 <label asp-for="type" class="control-label"></label>
                 <input asp-for="type" class="form-control" />
@@ -67,7 +77,11 @@
                 <input asp-for="shortDis" class="form-control" />
                 <span asp-validation-for="shortDis" class="text-danger"></span>
             </div>
-            
+            <div class="form-group">
+                <label asp-for="ArSpecifications" class="control-label"></label>
+                <input asp-for="ArSpecifications" class="form-control" />
+                <span asp-validation-for="ArSpecifications" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Specifications" class="control-label"></label>
                 <input asp-for="Specifications" class="form-control" />
@@ -82,7 +96,7 @@
 
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

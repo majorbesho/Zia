@@ -13,7 +13,7 @@ namespace Zia.Models.ViewModel
         public IEnumerable<Family> Family { get; set; }
         public IEnumerable<Uislide>Uislides { get; set; }
         public IEnumerable<Team> Teams { get; set; }
-
+        public IEnumerable<VideoUploader> VideoUploaders { get; set; }
         public IEnumerable<Clinet> Clinets { get; set; }
 
 

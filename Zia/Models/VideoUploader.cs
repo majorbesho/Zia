@@ -15,14 +15,7 @@ namespace Zia.Models
         public string Url { get; set; }
         public bool IsActive { get; set; }
 
-        [Display(Name = "category")]
-
-        public int categoryId { get; set; }
-        [ForeignKey("categoryId")]
-        public virtual Category Category { get; set; }
-
-
-
+        
 
     }
 }

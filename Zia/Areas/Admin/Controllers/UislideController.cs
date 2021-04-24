@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Zia.Data;
-using Zia.Data.Migrations;
+
 using Zia.Models;
 
 namespace Zia.Areas.Admin.Controllers

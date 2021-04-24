@@ -122,9 +122,9 @@
                                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                         data-key="@Stripe.Value.PublishableKey"
                                         data-amount="@OrderTotalForStrip"
-                                        data-name="Spice Restaurant"
+                                        data-name="Zia food industry"
                                         data-label="Place Order"
-                                        data-description="Good Food, Good Mood."
+                                        data-description="Good Health, Good Mood."
                                         data-locale="auto"
                                         data-allow-remember-me="false"
                                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"></script>
@@ -143,7 +143,13 @@
 
 @section Scripts{
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+    </script>
 
     <script>
         $(function () {
@@ -155,7 +161,7 @@
 
 
             $("#datepicker").datepicker({ minDate: minDt, maxDate: "+1W" });
-            $("#timepicker").timepicker({ 'minTime': '11:00 AM', 'maxTime': '9:00 PM', step: '30' })
+            $("#timepicker").timepicker({ 'minTime': '11:00 AM', 'maxTime': '9:00 PM', step: '30' });
         });
 
 
@@ -188,10 +194,10 @@
             }
             else {
                 if (curDt.getMinutes() < 30) {
-                    minTime = (curDt.getHours() + 1).toString() + ':30pm'
+                    minTime = (curDt.getHours() + 1).toString() + ':30pm';
                 }
                 else {
-                    minTime = (curDt.getHours() + 2).toString() + ':00pm'
+                    minTime = (curDt.getHours() + 2).toString() + ':00pm';
                 }
             }
             return minTime;
@@ -209,19 +215,19 @@
             var phone = document.getElementById("txtPhone").value;
 
             if (dt.toString().length == 0) {
-                alert("Please select pickup date")
+                alert("Please select pickup date");
                 return false;
             }
             else if (time.toString().length == 0) {
-                alert("Please select pickup time")
+                alert("Please select pickup time");
                 return false;
             }
             else if (name.toString().length == 0) {
-                alert("Please enter pickup name")
+                alert("Please enter pickup name");
                 return false;
             }
             else if (phone.toString().length == 0) {
-                alert("Please enter a phone number")
+                alert("Please enter a phone number");
                 return false;
             }
             else {

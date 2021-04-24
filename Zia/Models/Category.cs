@@ -26,6 +26,11 @@ namespace Zia.Models
         public int FamilyId { get; set; }
         [ForeignKey("FamilyId")]
         public virtual Family Family{ get; set; }
+        [Display(Name = "VideoUploader")]
+
+        public int VideoUploaderId { get; set; }
+        [ForeignKey("VideoUploaderId")]
+        public virtual VideoUploader VideoUploader { get; set; }
 
     }
 }

@@ -27,7 +27,7 @@ namespace Zia.Areas.Admin.Controllers
         // GET: Admin/VideoUploaders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.VideoUploaders.Include(v => v.Category);
+            var applicationDbContext = _context.VideoUploaders;
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -40,7 +40,7 @@ namespace Zia.Areas.Admin.Controllers
             }
 
             var videoUploader = await _context.VideoUploaders
-                .Include(v => v.Category)
+                
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (videoUploader == null)
             {
@@ -81,7 +81,7 @@ namespace Zia.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["categoryId"] = new SelectList(_context.Categories, "Id", "Name", videoUploader.categoryId);
+          
             return View(videoUploader);
         }
 
@@ -98,7 +98,7 @@ namespace Zia.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["categoryId"] = new SelectList(_context.Categories, "Id", "Name", videoUploader.categoryId);
+           
             return View(videoUploader);
         }
 
@@ -131,7 +131,7 @@ namespace Zia.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["categoryId"] = new SelectList(_context.Categories, "Id", "Name", videoUploader.categoryId);
+           
             return View(videoUploader);
             
         }
@@ -145,7 +145,7 @@ namespace Zia.Areas.Admin.Controllers
             }
 
             var videoUploader = await _context.VideoUploaders
-                .Include(v => v.Category)
+                
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (videoUploader == null)
             {

@@ -5,8 +5,12 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using Zia.Data;
 using Zia.Models;
 using Zia.Models.ViewModel;
@@ -17,11 +21,17 @@ namespace Zia.Areas.Customer.Controllers
     [Area("Customer")]
     public class HomeController : Controller
     {
+        private readonly IOptions<RequestLocalizationOptions> localizationOptions;
+        private readonly IStringLocalizer<HomeController> localizer;
         private readonly ApplicationDbContext db;
 
-        public HomeController(ApplicationDbContext db)
+        public HomeController(ApplicationDbContext db
+            , IStringLocalizer<HomeController> localizer,
+            IOptions<RequestLocalizationOptions> localizationOptions)
         {
+            this.localizationOptions = localizationOptions;
             this.db = db;
+            this.localizer = localizer;
         }
 
         public async Task<IActionResult> Index()
@@ -48,10 +58,14 @@ namespace Zia.Areas.Customer.Controllers
                 Uislides = await db.Uislides.ToListAsync()
                 ,
                 Teams = await db.Teams.ToListAsync(),
-                Clinets = await db.Clinets.ToListAsync()
+                Clinets = await db.Clinets.ToListAsync(),
+                VideoUploaders = await db.VideoUploaders.ToListAsync()
+
 
 
             };
+            ViewData["MyTitle"] = localizer["The localised title of my app!"];
+            ViewData["test"] = localizer["test"];
             return View(indexVm);
         }
         public async Task<IActionResult> Index1(int? catid)
@@ -78,7 +92,8 @@ namespace Zia.Areas.Customer.Controllers
                         .Include(m => m.Category)
                         .ToListAsync(),
                     Uislides = await db.Uislides.ToListAsync(),
-                    Clinets = await db.Clinets.ToListAsync()
+                    Clinets = await db.Clinets.ToListAsync(),
+                    VideoUploaders = await db.VideoUploaders.ToListAsync()
 
                 };
                 return View(indexVmall);
@@ -92,7 +107,8 @@ namespace Zia.Areas.Customer.Controllers
                     .Include(m => m.Category)
                     .ToListAsync(),
                 Uislides = await db.Uislides.ToListAsync(),
-                Clinets = await db.Clinets.ToListAsync()
+                Clinets = await db.Clinets.ToListAsync(),
+                VideoUploaders = await db.VideoUploaders.ToListAsync()
 
             };
             return View(indexVm);
@@ -214,5 +230,21 @@ namespace Zia.Areas.Customer.Controllers
         //    };
         //    return View(indexVm);
         //}
+
+        [HttpPost]
+        public IActionResult CultureManager(string culture)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
+
+            return RedirectToAction(nameof(Index));
+        }
+
+      
+
+
     }
 }
